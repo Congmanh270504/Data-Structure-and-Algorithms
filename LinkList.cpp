@@ -6,18 +6,21 @@ void fixScanf()
 }
 void menu()
 {
-	printf("=============================Menu================================\n");
-	printf("|| **************************Init***************************** ||\n");
-	printf("|| * 1.Show Link list                                        * ||\n");
-	printf("|| **************************Format*************************** ||\n");
-	printf("|| * 2.Insert Head                                           * ||\n");
-	printf("|| * 3.Insert Tail                                           * ||\n");
-	printf("|| * 4.Insert node p after q                                 * ||\n");
-	printf("|| * 5.Find node x                                           * ||\n");
-	printf("|| **************************WriteFile************************ ||\n");
-	printf("|| * 0.Exit                                                  * ||\n");
-	printf("|| ***************************End***************************** ||\n");
-	printf("=================================================================\n");
+
+	printf("%s============================= %sMenu%s ==============================\n", YELLOW, CYAN, YELLOW);
+	printf("|| %s************************** %sInit %s****************************%s||\n", WHITE, RED, WHITE, YELLOW);
+	printf("|| %s* 1.Create Linked List                                    *%s ||\n", WHITE, YELLOW);
+	printf("|| %s* 2.Create random Linked List                             *%s ||\n", WHITE, YELLOW);
+	printf("|| %s************************** %sFormat%s **************************%s||\n", WHITE, RED, WHITE, YELLOW);
+	printf("|| %s* 3.Insert Head                                           *%s ||\n", WHITE, YELLOW);
+	printf("|| %s* 4.Insert Tail                                           *%s ||\n", WHITE, YELLOW);
+	printf("|| %s* 5.Insert node p after q                                 *%s ||\n", WHITE, YELLOW);
+	printf("|| %s* 6.Find node x                                           *%s ||\n", WHITE, YELLOW);
+	printf("|| %s************************** %sWriteFile%s ***********************%s||\n", WHITE, RED, WHITE, YELLOW);
+	printf("|| %s* 10.Show Link list                                       *%s ||\n", WHITE, YELLOW);
+	printf("|| %s* 0.Exit                                                  *%s ||\n", WHITE, YELLOW);
+	printf("|| %s************************** %sEnd%s *****************************%s||\n", WHITE, GREEN, WHITE, YELLOW);
+	printf("=================================================================%s\n", RESET);
 }
 SNode* createSNode(int x)
 {
@@ -31,7 +34,51 @@ SNode* createSNode(int x)
 	p->Node = NULL;
 	return p;
 }
-void getLinkList(SNode* n)
+void create(SList& sl, int n)
+{
+	int i = 0, x;
+
+	while (i < n)
+	{
+		if (isEmty(sl))
+		{
+			printf("Get data node %d: ", i);
+			scanf("%d", &x);
+			SNode* p = createSNode(x);
+			insertHead(sl, p);
+		}
+		else
+		{
+			printf("Get data node %d: ", i);
+			scanf("%d", &x);
+			SNode* p = createSNode(x);
+			insertTail(sl, p);
+		}
+		i++;
+	}
+}
+void createRandom(SList& sl, int n)
+{
+	int i = 0, x;
+	srand((unsigned)time(NULL));
+	while (i < n)
+	{
+		if (isEmty(sl))
+		{
+			x = -20 + rand() % 120;
+			SNode* p = createSNode(x);
+			insertHead(sl, p);
+		}
+		else
+		{
+			x = -20 + rand() % 120;
+			SNode* p = createSNode(x);
+			insertTail(sl, p);
+		}
+		i++;
+	}
+}
+void output(SNode*& n)
 {
 	while (n != NULL)
 	{

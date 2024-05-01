@@ -1,72 +1,68 @@
 #include"LinkList.h"
 int main()
 {
-	SList list;
+	SList sl;
 
-	SNode* head = new SNode();
-	SNode* second = new SNode();
-	SNode* third = new SNode();
-	SNode* tail = new SNode();
-	head->data = 1;
-	head->Node = second;
-	second->data = 2;
-	second->Node = third;
-	third->data = 3;
-	third->Node = tail;
-	tail->data = 4;
-	tail->Node = NULL;
 
-	list.head = head;
-	list.tail = tail;
 	int choose = 0;
-	int x, y;
+	int x, y, n;
 	SNode* p;
 	SNode* q;
 	SNode* result;
 	menu();
 	do
 	{
-		printf("Choose excercise u want : ");
+		printf("%sChoose excercise u want: ", PURPLE);
 		if (!scanf("%d", &choose))
 			choose = -1;
+		printf("%s", RESET);
 		fixScanf();
 		switch (choose)
 		{
 		case 1:
-			getLinkList(list.head);
+			printf("Get lenght of Linked List: ");
+			scanf("%d", &n);
+			create(sl, n);
+			output(sl.head);
 			break;
 		case 2:
+			printf("Get lenght of Linked List: ");
+			scanf("%d", &n);
+			createRandom(sl, n);
+			output(sl.head);
+			break;
+		case 3:
 			printf("Get value to insert Head: ");
 			scanf("%d", &x);
 			p = createSNode(x);
-			insertHead(list, p);
-			getLinkList(list.head);
+			insertHead(sl, p);
+			output(sl.head);
 			break;
-		case 3:
+		case 4:
 			printf("Get value to insert Tail: ");
 			scanf("%d", &x);
 			p = createSNode(x);
-			insertTail(list, p);
-			getLinkList(list.head);
+			insertTail(sl, p);
+			output(sl.head);
 			break;
-		case 4:
+		case 5:
 			printf("Get value before node: ");
 			scanf("%d", &y);
 			q = createSNode(y);
-			q = findSNode(list, y);
+			q = findSNode(sl, y);
 			if (q == NULL) {
 				printf("Not find node q !!\n");
 			}
 			printf("Get value after node: ");
 			scanf("%d", &x);
 			p = createSNode(x);
-			insertAfter(list, q, p);
-			getLinkList(list.head);
+			insertAfter(sl, q, p);
+			output(sl.head);
 			break;
-		case 5:
+		case 6:
 			printf("\nGet value to find: ");
 			scanf("%d", &y);
-			result = findSNode(list, y);
+			result = findSNode(sl, y);
 			if (result != NULL)
 			{
 				printf("Have value %d in Link List!!\n");
@@ -75,7 +71,9 @@ int main()
 				printf("Not find!!");
 			}
 			break;
-
+		case 10:
+			output(sl.head);
+			break;
 		case 0:
 			printf("\tHave a nice day sir!!\n");
 			return 0;
