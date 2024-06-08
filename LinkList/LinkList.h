@@ -45,11 +45,16 @@ void menu();
 SNode* createSNode(int x);
 void create(SList& sl, int n);
 void createRandom(SList& sl, int n);
-void output(SNode*& n);
+void output(SList& sl, SNode*& n);
 int isEmty(SList& sl);
+//insert
 void insertHead(SList& sl, SNode* p);
 void insertTail(SList& sl, SNode* p);
 void insertAfter(SList& sl, SNode* q, SNode* p);
 SNode* findSNode(SList& sl, int x);
+//delete
+int deleteHeadNode(SList& sl);
+int deleteTailNode(SList& sl);
+void deleteList(SList& sl, int n);
 
 #endif // !1
